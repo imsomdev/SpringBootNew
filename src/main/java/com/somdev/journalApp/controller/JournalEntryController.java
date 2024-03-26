@@ -42,13 +42,14 @@ public class JournalEntryController {
     }
 
     @PutMapping("id/{id}")
-    public JournalEntry editEntryById(@PathVariable Long id, @RequestBody JournalEntry myEntry){
+    public JournalEntry editEntryById(@PathVariable ObjectId id, @RequestBody JournalEntry myEntry){
         return null;
     }
 
     @DeleteMapping("id/{id}")
-    public JournalEntry deleteEntryById(@PathVariable Long id){
-        return null;
+    public String deleteEntryById(@PathVariable ObjectId id){
+        journalEntryServices.deleteById(id);
+        return "item deleted";
     }
 
 }

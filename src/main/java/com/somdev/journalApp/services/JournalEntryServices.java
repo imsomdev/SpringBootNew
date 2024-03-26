@@ -20,17 +20,21 @@ public class JournalEntryServices {
     }
 
     public List<JournalEntry> getAllEntry() {
-    try {
-        return journalEntryRepository.findAll();
-    } catch (DataAccessException e) {
-        // Log the exception or handle it as per your application's requirements
-        e.printStackTrace(); // Example of logging the exception
-        // You can throw a custom exception or return an empty list depending on your use case
-        return Collections.emptyList();
+        try {
+            return journalEntryRepository.findAll();
+        } catch (DataAccessException e) {
+            // Log the exception or handle it as per your application's requirements
+            e.printStackTrace(); // Example of logging the exception
+            // You can throw a custom exception or return an empty list depending on your use case
+            return Collections.emptyList();
+        }
     }
-}
 
     public Optional<JournalEntry> getById(ObjectId id){
         return journalEntryRepository.findById(id);
+    }
+
+    public void deleteById(ObjectId id){
+        journalEntryRepository.deleteById(id);
     }
 }
